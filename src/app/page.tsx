@@ -84,7 +84,7 @@ export default function Home() {
                 </svg>
               </div>
 
-              <h2 className="text-xl font-bold text-gray-900 mb-1">IIT & NEET SAINIK SCHOOL</h2>
+              <h2 className="text-xl font-bold text-gray-900 mb-1">IIT, NEET & SAINIK SCHOOL</h2>
               <h3 className="text-lg font-semibold text-red-800 mb-3">Awareness Program</h3>
               <p className="text-sm text-gray-500 mb-6">April 19th • Register your children for our awareness program</p>
 

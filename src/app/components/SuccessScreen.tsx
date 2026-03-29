@@ -63,7 +63,7 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
 
             {/* Program name */}
             <h3 className="text-xl font-bold italic leading-tight mb-0.5" style={{ color: "#B8960C", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              IIT & NEET
+              IIT, NEET &
             </h3>
             <h3 className="text-lg font-bold italic leading-tight mb-0.5" style={{ color: "#B8960C", fontFamily: "Georgia, 'Times New Roman', serif" }}>
               Sainik School
@@ -111,7 +111,8 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
             </p>
             <div className="flex items-center justify-center gap-4 mb-3">
               <div className="text-center">
-                <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>Sat, 19 April 2026</p>
+                <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>Sun, 19 April 2026</p>
+                <p className="text-[9px] font-semibold mt-0.5" style={{ color: "#B8960C" }}>9:30 AM Sharp</p>
               </div>
               <div className="w-px h-5" style={{ background: "#D4B96A" }} />
               <div className="text-center">
