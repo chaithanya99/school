@@ -1,5 +1,7 @@
 "use client";
 
+import { useRef, useEffect } from "react";
+
 export interface ChildData {
   name: string;
   gender: string;
@@ -65,6 +67,17 @@ const classOptions = [
 ];
 
 export default function StepChildren({ children, setChildren, onNext, onBack }: StepChildrenProps) {
+  const lastChildRef = useRef<HTMLInputElement>(null);
+  const prevChildCount = useRef(children.length);
+
+  useEffect(() => {
+    if (children.length > prevChildCount.current && lastChildRef.current) {
+      lastChildRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+      lastChildRef.current.focus();
+    }
+    prevChildCount.current = children.length;
+  }, [children.length]);
+
   const addChild = () => {
     setChildren([...children, { ...emptyChild }]);
   };
@@ -109,6 +122,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
 
             <div className="space-y-3">
               <input
+                ref={index === children.length - 1 ? lastChildRef : undefined}
                 type="text"
                 value={child.name}
                 onChange={(e) => updateChild(index, { name: e.target.value })}
