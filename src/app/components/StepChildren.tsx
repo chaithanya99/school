@@ -21,28 +21,39 @@ const emptyChild: ChildData = { name: "", gender: "", currentClass: "", schoolNa
 const courseOptions = ["Navodaya", "Sainik", "IIT", "NEET"];
 
 const schoolOptions = [
-  "Saraswathi High School",
-  "Saraswathi Vidya Mandir",
-  "Padmavathi High School",
   "Balaji High School",
-  "Raghavendra High School",
-  "Chaithanya High School PDTR",
-  "Narayana High School PDTR",
-  "T.K.R High School",
-  "John's High School",
-  "St. Mary's School",
-  "Radiance High School",
-  "Gowtham High School",
   "Bharathi Vidya Mandir",
-  "Geethanjali High School",
-  "Sai Play School",
+  "Chaithanya High School PDTR",
+  "Challapalli High School",
   "Edify School PDTR",
-  "D.P.S PDTR",
-  "Slate School",
+  "Geethanjali High School",
+  "Gowtham High School",
+  "I.D.P.S PDTR",
+  "John's High School",
+  "Narayana High School PDTR",
+  "Padmavathi High School",
   "PR Govt High School",
-  "ZPHS",
-  "ZPGHS",
+  "Radiance High School",
+  "Raghavendra High School",
+  "Sai Play School",
+  "Saraswathi Vidya Mandir",
+  "Saraswathi Vidya Mandir Veparala",
+  "Slate School",
+  "St. Mary's School",
+  "T.K.R High School",
   "Viswa Jyothi High School",
+  "ZPHS D Nandyala",
+  "ZPHS Devagudi",
+  "ZPHS Dodium",
+  "ZPHS Edigapeta",
+  "ZPHS Girls JMD",
+  "ZPHS Market",
+  "ZPHS Moragudi",
+  "ZPHS Mylavaram",
+  "ZPHS N.Kottalapalli",
+  "ZPHS Nossam",
+  "ZPHS Vaddirala",
+  "ZPHS Veparala",
   "Others",
 ];
 
@@ -75,6 +86,9 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
 
   return (
     <div className="flex flex-col px-2">
+      <div className="w-20 h-20 mb-3 mx-auto">
+        <img src="/children.png" alt="Children" className="w-full h-full object-contain" />
+      </div>
       <h2 className="text-xl font-bold text-gray-900 mb-1 text-center">Children Details</h2>
       <p className="text-gray-400 text-center mb-5 text-sm">Add details for each child attending</p>
 
@@ -82,7 +96,8 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
         {children.map((child, index) => (
           <div key={index} className="bg-white border border-red-100 rounded-2xl p-4 relative">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-semibold text-red-800 bg-red-50 px-3 py-1 rounded-full">
+              <span className="text-sm font-semibold text-red-800 bg-red-50 px-3 py-1 rounded-full flex items-center gap-1.5">
+                <img src="/children.png" alt="" className="w-4 h-4 object-contain" />
                 Child {index + 1}
               </span>
               {children.length > 1 && (
@@ -123,28 +138,34 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 ))}
               </select>
 
-              <select
-                value={child.schoolName}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  updateChild(index, { schoolName: val, ...(val !== "Others" ? { customSchoolName: "" } : {}) });
-                }}
-                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
-              >
-                <option value="">Select School *</option>
+              <div className="relative">
+                <span className="absolute left-3 top-1/2 -translate-y-1/2 text-base">🏫</span>
+                <select
+                  value={child.schoolName}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    updateChild(index, { schoolName: val, ...(val !== "Others" ? { customSchoolName: "" } : {}) });
+                  }}
+                  className="w-full border border-gray-200 rounded-xl pl-9 pr-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
+                >
+                  <option value="">Select School *</option>
                 {schoolOptions.map((s) => (
                   <option key={s} value={s}>{s}</option>
                 ))}
               </select>
+              </div>
 
               {child.schoolName === "Others" && (
-                <input
-                  type="text"
-                  value={child.customSchoolName}
-                  onChange={(e) => updateChild(index, { customSchoolName: e.target.value })}
-                  placeholder="Enter school name *"
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
-                />
+                <div className="relative">
+                  <span className="absolute left-3 top-1/2 -translate-y-1/2 text-base">🏫</span>
+                  <input
+                    type="text"
+                    value={child.customSchoolName}
+                    onChange={(e) => updateChild(index, { customSchoolName: e.target.value })}
+                    placeholder="Enter school name *"
+                    className="w-full border border-gray-200 rounded-xl pl-9 pr-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
+                  />
+                </div>
               )}
 
               <div>

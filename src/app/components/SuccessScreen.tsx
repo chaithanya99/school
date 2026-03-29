@@ -57,13 +57,13 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
                 <path d="M12 22V8" stroke="#B8960C" strokeWidth="0.8"/>
               </svg>
             </div>
-            <p className="text-[8px] tracking-[3px] uppercase mb-3" style={{ color: "#555" }}>
-              Please join us for the
+            <p className="text-[10px] tracking-[3px] uppercase mb-3" style={{ color: "#555" }}>
+              We cordially invite you to attend the
             </p>
 
             {/* Program name */}
             <h3 className="text-xl font-bold italic leading-tight mb-0.5" style={{ color: "#B8960C", fontFamily: "Georgia, 'Times New Roman', serif" }}>
-              IIT, NEET &
+              IIT & NEET,
             </h3>
             <h3 className="text-lg font-bold italic leading-tight mb-0.5" style={{ color: "#B8960C", fontFamily: "Georgia, 'Times New Roman', serif" }}>
               Sainik School
@@ -105,24 +105,28 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
               <div className="flex-1 h-px" style={{ background: "#D4B96A" }} />
             </div>
 
-            {/* Date & Venue side by side */}
+            {/* Date */}
             <p className="text-[10px] tracking-[2px] uppercase mb-2" style={{ color: "#555", fontFamily: "Georgia, serif" }}>
               Save The Date
             </p>
-            <div className="flex items-center justify-center gap-4 mb-3">
-              <div className="text-center">
-                <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>Sun, 19 April 2026</p>
-                <p className="text-[9px] font-semibold mt-0.5" style={{ color: "#B8960C" }}>9:30 AM Sharp</p>
-              </div>
-              <div className="w-px h-5" style={{ background: "#D4B96A" }} />
-              <div className="text-center">
-                <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>Nanu Bala Function Hall</p>
-                <p className="text-[9px]" style={{ color: "#999" }}>Challapalli</p>
-              </div>
+            <p className="text-sm font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>
+              Sunday, 19th April 2026
+            </p>
+            <p className="text-[9px] font-semibold mt-0.5 mb-3" style={{ color: "#B8960C" }}>9:30 AM Sharp</p>
+
+            {/* Venue */}
+            <p className="text-[10px] tracking-[2px] uppercase mb-1.5" style={{ color: "#555", fontFamily: "Georgia, serif" }}>
+              Venue
+            </p>
+            <div className="flex items-center justify-center gap-1 mb-3">
+              <span style={{ color: "#B8960C" }} className="text-sm">📍</span>
+              <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>
+                Nanu Bala Yellapa Function Hall
+              </p>
             </div>
 
             {/* Registered note */}
-            <p className="text-[9px] italic mb-2" style={{ color: "#aaa" }}>
+            <p className="text-[10px] font-semibold italic mb-2" style={{ color: "#B8960C" }}>
               {children.length === 1
                 ? `${children[0].name} has been`
                 : `${children.map(c => c.name).join(" & ")} have been`
@@ -133,6 +137,9 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
             <div className="pt-2" style={{ borderTop: "1px solid rgba(184,150,12,0.2)" }}>
               <p className="text-[9px] tracking-[2px] uppercase" style={{ color: "#B8960C" }}>
                 Challapalli High School
+              </p>
+              <p className="text-[8px] tracking-[1px] uppercase mt-0.5 text-red-400">
+                Challapalli IIT & NEET Academy
               </p>
             </div>
           </div>
