@@ -138,7 +138,6 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 <option value="">Gender *</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
-                <option value="other">Other</option>
               </select>
 
               <select
@@ -225,7 +224,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
           disabled={!isValid}
           className="flex-1 bg-red-800 hover:bg-red-900 text-white py-3.5 rounded-full font-semibold shadow-md shadow-red-200 disabled:bg-gray-300 disabled:shadow-none disabled:cursor-not-allowed transition-colors"
         >
-          Review
+          Next
         </button>
       </div>
     </div>

@@ -143,6 +143,11 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
               </p>
             </div>
           </div>
+
+          {/* Contact line */}
+          <p className="text-xs text-gray-500 mt-3 text-center">
+            For more details contact: <a href="tel:9948238784" className="text-red-800 font-semibold">9948238784</a>
+          </p>
         </div>
       </div>
 

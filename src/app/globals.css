@@ -19,3 +19,39 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(25vh) rotate(90deg) translateX(20px);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(50vh) rotate(180deg) translateX(-15px);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(75vh) rotate(270deg) translateX(10px);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg) translateX(-10px);
+    opacity: 0;
+  }
+}
+
+.animate-petal-fall {
+  animation: petal-fall linear infinite;
+}
