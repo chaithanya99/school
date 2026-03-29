@@ -12,9 +12,9 @@ const STEPS = ["Phone", "Parent", "Children", "Review"];
 export default function Home() {
   const [step, setStep] = useState(0);
   const [phone, setPhone] = useState("");
-  const [parentData, setParentData] = useState<ParentData>({ name: "", doorNumber: "", street: "", village: "", mandal: "" });
+  const [parentData, setParentData] = useState<ParentData>({ name: "", doorNumber: "", street: "", village: "" });
   const [childrenData, setChildrenData] = useState<ChildData[]>([
-    { name: "", gender: "", dob: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" },
+    { name: "", gender: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" },
   ]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);

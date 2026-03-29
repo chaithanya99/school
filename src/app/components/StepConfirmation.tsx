@@ -56,10 +56,7 @@ export default function StepConfirmation({
               <span className="text-gray-500">Village</span>
               <span className="text-gray-800 font-medium">{parentData.village}</span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-500">Mandal</span>
-              <span className="text-gray-800 font-medium">{parentData.mandal}</span>
-            </div>
+
           </div>
         </div>
 
@@ -76,10 +73,7 @@ export default function StepConfirmation({
                 <span className="text-gray-500">Gender</span>
                 <span className="text-gray-800 font-medium capitalize">{child.gender}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-gray-500">Date of Birth</span>
-                <span className="text-gray-800 font-medium">{child.dob}</span>
-              </div>
+
               <div className="flex justify-between">
                 <span className="text-gray-500">Class</span>
                 <span className="text-gray-800 font-medium">{child.currentClass}</span>

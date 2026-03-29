@@ -3,7 +3,6 @@
 export interface ChildData {
   name: string;
   gender: string;
-  dob: string;
   currentClass: string;
   schoolName: string;
   customSchoolName: string;
@@ -17,7 +16,7 @@ interface StepChildrenProps {
   onBack: () => void;
 }
 
-const emptyChild: ChildData = { name: "", gender: "", dob: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" };
+const emptyChild: ChildData = { name: "", gender: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" };
 
 const courseOptions = ["Navodaya", "Sainik", "IIT", "NEET"];
 
@@ -70,7 +69,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
   };
 
   const isValid = children.every(
-    (c) => c.name.trim() && c.gender && c.dob && c.currentClass && c.interestedCourse &&
+    (c) => c.name.trim() && c.gender && c.currentClass && c.interestedCourse &&
       (c.schoolName === "Others" ? c.customSchoolName.trim() : c.schoolName)
   );
 
@@ -102,26 +101,16 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
               />
 
-              <div className="grid grid-cols-2 gap-3">
-                <select
-                  value={child.gender}
-                  onChange={(e) => updateChild(index, { gender: e.target.value })}
-                  className="border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
-                >
-                  <option value="">Gender *</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                  <option value="other">Other</option>
-                </select>
-
-                <input
-                  type="date"
-                  value={child.dob}
-                  onChange={(e) => updateChild(index, { dob: e.target.value })}
-                  className="border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
-                  placeholder="Date of Birth *"
-                />
-              </div>
+              <select
+                value={child.gender}
+                onChange={(e) => updateChild(index, { gender: e.target.value })}
+                className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+              >
+                <option value="">Gender *</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
 
               <select
                 value={child.currentClass}

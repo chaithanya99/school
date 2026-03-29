@@ -5,7 +5,6 @@ export interface ParentData {
   doorNumber: string;
   street: string;
   village: string;
-  mandal: string;
 }
 
 interface StepParentDetailsProps {
@@ -19,11 +18,10 @@ export default function StepParentDetails({ data, setData, onNext, onBack }: Ste
   const handleNext = () => {
     if (!data.name.trim()) return;
     if (!data.village.trim()) return;
-    if (!data.mandal.trim()) return;
     onNext();
   };
 
-  const isValid = data.name.trim() && data.village.trim() && data.mandal.trim();
+  const isValid = data.name.trim() && data.village.trim();
 
   return (
     <div className="flex flex-col px-2">
@@ -83,16 +81,7 @@ export default function StepParentDetails({ data, setData, onNext, onBack }: Ste
           />
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1.5">Mandal <span className="text-red-400">*</span></label>
-          <input
-            type="text"
-            value={data.mandal}
-            onChange={(e) => setData({ ...data, mandal: e.target.value })}
-            placeholder="Enter mandal name"
-            className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 focus:border-indigo-500 outline-none transition-colors text-gray-800 bg-white"
-          />
-        </div>
+
       </div>
 
       <div className="flex gap-3">
