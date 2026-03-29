@@ -1,11 +1,12 @@
 "use client";
 
 import { ChildData } from "./StepChildren";
+import { ParentData } from "./StepParentDetails";
 
 interface StepConfirmationProps {
   phone: string;
   parentName: string;
-  parentAddress: string;
+  parentData: ParentData;
   children: ChildData[];
   onBack: () => void;
   onSubmit: () => void;
@@ -13,7 +14,7 @@ interface StepConfirmationProps {
 }
 
 export default function StepConfirmation({
-  phone, parentName, parentAddress, children, onBack, onSubmit, submitting,
+  phone, parentName, parentData, children, onBack, onSubmit, submitting,
 }: StepConfirmationProps) {
   return (
     <div className="flex flex-col px-2">
@@ -39,9 +40,25 @@ export default function StepConfirmation({
               <span className="text-gray-500">Name</span>
               <span className="text-gray-800 font-medium">{parentName}</span>
             </div>
+            {parentData.doorNumber && (
+              <div className="flex justify-between">
+                <span className="text-gray-500">Door No.</span>
+                <span className="text-gray-800 font-medium">{parentData.doorNumber}</span>
+              </div>
+            )}
+            {parentData.street && (
+              <div className="flex justify-between">
+                <span className="text-gray-500">Street</span>
+                <span className="text-gray-800 font-medium">{parentData.street}</span>
+              </div>
+            )}
             <div className="flex justify-between">
-              <span className="text-gray-500">Address</span>
-              <span className="text-gray-800 font-medium text-right max-w-[60%]">{parentAddress}</span>
+              <span className="text-gray-500">Village</span>
+              <span className="text-gray-800 font-medium">{parentData.village}</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500">Mandal</span>
+              <span className="text-gray-800 font-medium">{parentData.mandal}</span>
             </div>
           </div>
         </div>
@@ -70,6 +87,10 @@ export default function StepConfirmation({
               <div className="flex justify-between">
                 <span className="text-gray-500">School</span>
                 <span className="text-gray-800 font-medium text-right max-w-[60%]">{child.schoolName}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-500">Course</span>
+                <span className="text-gray-800 font-medium">{child.interestedCourse}</span>
               </div>
             </div>
           </div>

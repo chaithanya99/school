@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import StepPhone from "./components/StepPhone";
-import StepParentDetails from "./components/StepParentDetails";
+import StepParentDetails, { ParentData } from "./components/StepParentDetails";
 import StepChildren, { ChildData } from "./components/StepChildren";
 import StepConfirmation from "./components/StepConfirmation";
 import SuccessScreen from "./components/SuccessScreen";
@@ -12,9 +12,9 @@ const STEPS = ["Phone", "Parent", "Children", "Review"];
 export default function Home() {
   const [step, setStep] = useState(0);
   const [phone, setPhone] = useState("");
-  const [parentData, setParentData] = useState({ name: "", address: "" });
+  const [parentData, setParentData] = useState<ParentData>({ name: "", doorNumber: "", street: "", village: "", mandal: "" });
   const [childrenData, setChildrenData] = useState<ChildData[]>([
-    { name: "", gender: "", dob: "", currentClass: "", schoolName: "" },
+    { name: "", gender: "", dob: "", currentClass: "", schoolName: "", interestedCourse: "" },
   ]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -97,7 +97,7 @@ export default function Home() {
             <StepConfirmation
               phone={phone}
               parentName={parentData.name}
-              parentAddress={parentData.address}
+              parentData={parentData}
               children={childrenData}
               onBack={() => setStep(2)}
               onSubmit={handleSubmit}
