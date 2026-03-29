@@ -86,7 +86,7 @@ export default function StepConfirmation({
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">School</span>
-                <span className="text-gray-800 font-medium text-right max-w-[60%]">{child.schoolName}</span>
+                <span className="text-gray-800 font-medium text-right max-w-[60%]">{child.schoolName === "Others" ? child.customSchoolName : child.schoolName}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-gray-500">Course</span>

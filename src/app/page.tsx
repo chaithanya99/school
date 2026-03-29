@@ -14,7 +14,7 @@ export default function Home() {
   const [phone, setPhone] = useState("");
   const [parentData, setParentData] = useState<ParentData>({ name: "", doorNumber: "", street: "", village: "", mandal: "" });
   const [childrenData, setChildrenData] = useState<ChildData[]>([
-    { name: "", gender: "", dob: "", currentClass: "", schoolName: "", interestedCourse: "" },
+    { name: "", gender: "", dob: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" },
   ]);
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);

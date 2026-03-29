@@ -6,6 +6,7 @@ export interface ChildData {
   dob: string;
   currentClass: string;
   schoolName: string;
+  customSchoolName: string;
   interestedCourse: string;
 }
 
@@ -16,9 +17,35 @@ interface StepChildrenProps {
   onBack: () => void;
 }
 
-const emptyChild: ChildData = { name: "", gender: "", dob: "", currentClass: "", schoolName: "", interestedCourse: "" };
+const emptyChild: ChildData = { name: "", gender: "", dob: "", currentClass: "", schoolName: "", customSchoolName: "", interestedCourse: "" };
 
 const courseOptions = ["Navodaya", "Sainik", "IIT", "NEET"];
+
+const schoolOptions = [
+  "Saraswathi High School",
+  "Saraswathi Vidya Mandir",
+  "Padmavathi High School",
+  "Balaji High School",
+  "Raghavendra High School",
+  "Chaithanya High School PDTR",
+  "Narayana High School PDTR",
+  "T.K.R High School",
+  "John's High School",
+  "St. Mary's School",
+  "Radiance High School",
+  "Gowtham High School",
+  "Bharathi Vidya Mandir",
+  "Geethanjali High School",
+  "Sai Play School",
+  "Edify School PDTR",
+  "D.P.S PDTR",
+  "Slate School",
+  "PR Govt High School",
+  "ZPHS",
+  "ZPGHS",
+  "Viswa Jyothi High School",
+  "Others",
+];
 
 const classOptions = [
   "Nursery", "LKG", "UKG",
@@ -43,7 +70,8 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
   };
 
   const isValid = children.every(
-    (c) => c.name.trim() && c.gender && c.dob && c.currentClass && c.schoolName.trim() && c.interestedCourse
+    (c) => c.name.trim() && c.gender && c.dob && c.currentClass && c.interestedCourse &&
+      (c.schoolName === "Others" ? c.customSchoolName.trim() : c.schoolName)
   );
 
   return (
@@ -106,13 +134,31 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 ))}
               </select>
 
-              <input
-                type="text"
+              <select
                 value={child.schoolName}
-                onChange={(e) => updateChild(index, "schoolName", e.target.value)}
-                placeholder="School name *"
+                onChange={(e) => {
+                  updateChild(index, "schoolName", e.target.value);
+                  if (e.target.value !== "Others") {
+                    updateChild(index, "customSchoolName", "");
+                  }
+                }}
                 className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
-              />
+              >
+                <option value="">Select School *</option>
+                {schoolOptions.map((s) => (
+                  <option key={s} value={s}>{s}</option>
+                ))}
+              </select>
+
+              {child.schoolName === "Others" && (
+                <input
+                  type="text"
+                  value={child.customSchoolName}
+                  onChange={(e) => updateChild(index, "customSchoolName", e.target.value)}
+                  placeholder="Enter school name *"
+                  className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                />
+              )}
 
               <div>
                 <p className="text-xs font-medium text-gray-500 mb-2">Interested Course *</p>
