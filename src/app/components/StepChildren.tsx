@@ -64,8 +64,8 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
     setChildren(children.filter((_, i) => i !== index));
   };
 
-  const updateChild = (index: number, field: keyof ChildData, value: string) => {
-    const updated = children.map((c, i) => (i === index ? { ...c, [field]: value } : c));
+  const updateChild = (index: number, updates: Partial<ChildData>) => {
+    const updated = children.map((c, i) => (i === index ? { ...c, ...updates } : c));
     setChildren(updated);
   };
 
@@ -97,7 +97,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
               <input
                 type="text"
                 value={child.name}
-                onChange={(e) => updateChild(index, "name", e.target.value)}
+                onChange={(e) => updateChild(index, { name: e.target.value })}
                 placeholder="Child's full name *"
                 className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
               />
@@ -105,7 +105,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
               <div className="grid grid-cols-2 gap-3">
                 <select
                   value={child.gender}
-                  onChange={(e) => updateChild(index, "gender", e.target.value)}
+                  onChange={(e) => updateChild(index, { gender: e.target.value })}
                   className="border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
                 >
                   <option value="">Gender *</option>
@@ -117,7 +117,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 <input
                   type="date"
                   value={child.dob}
-                  onChange={(e) => updateChild(index, "dob", e.target.value)}
+                  onChange={(e) => updateChild(index, { dob: e.target.value })}
                   className="border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
                   placeholder="Date of Birth *"
                 />
@@ -125,7 +125,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
 
               <select
                 value={child.currentClass}
-                onChange={(e) => updateChild(index, "currentClass", e.target.value)}
+                onChange={(e) => updateChild(index, { currentClass: e.target.value })}
                 className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
               >
                 <option value="">Current Class *</option>
@@ -137,10 +137,8 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
               <select
                 value={child.schoolName}
                 onChange={(e) => {
-                  updateChild(index, "schoolName", e.target.value);
-                  if (e.target.value !== "Others") {
-                    updateChild(index, "customSchoolName", "");
-                  }
+                  const val = e.target.value;
+                  updateChild(index, { schoolName: val, ...(val !== "Others" ? { customSchoolName: "" } : {}) });
                 }}
                 className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
               >
@@ -154,7 +152,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 <input
                   type="text"
                   value={child.customSchoolName}
-                  onChange={(e) => updateChild(index, "customSchoolName", e.target.value)}
+                  onChange={(e) => updateChild(index, { customSchoolName: e.target.value })}
                   placeholder="Enter school name *"
                   className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
                 />
@@ -167,7 +165,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                     <button
                       key={course}
                       type="button"
-                      onClick={() => updateChild(index, "interestedCourse", course)}
+                      onClick={() => updateChild(index, { interestedCourse: course })}
                       className={`py-2 px-3 rounded-xl text-sm font-medium border-2 transition-colors ${
                         child.interestedCourse === course
                           ? "border-indigo-500 bg-indigo-50 text-indigo-700"
