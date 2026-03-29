@@ -146,10 +146,7 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
         </div>
       </div>
 
-      {/* Note below */}
-      <p className="text-gray-400 text-[10px] mt-3 mb-2">
-        📸 Screenshot this invitation for your reference
-      </p>
+
     </div>
   );
 }
