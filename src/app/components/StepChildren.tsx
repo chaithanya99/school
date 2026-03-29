@@ -75,18 +75,18 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
 
   return (
     <div className="flex flex-col px-2">
-      <h2 className="text-2xl font-bold text-gray-800 mb-1 text-center">Children Details</h2>
-      <p className="text-gray-500 text-center mb-5 text-sm">Add details for each child attending</p>
+      <h2 className="text-xl font-bold text-gray-900 mb-1 text-center">Children Details</h2>
+      <p className="text-gray-400 text-center mb-5 text-sm">Add details for each child attending</p>
 
-      <div className="space-y-5 mb-6 max-h-[55vh] overflow-y-auto pr-1">
+      <div className="space-y-4 mb-5 max-h-[55vh] overflow-y-auto pr-1">
         {children.map((child, index) => (
-          <div key={index} className="bg-white border-2 border-gray-100 rounded-2xl p-4 relative">
+          <div key={index} className="bg-white border border-red-100 rounded-2xl p-4 relative">
             <div className="flex items-center justify-between mb-3">
-              <span className="text-sm font-semibold text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">
+              <span className="text-sm font-semibold text-red-800 bg-red-50 px-3 py-1 rounded-full">
                 Child {index + 1}
               </span>
               {children.length > 1 && (
-                <button onClick={() => removeChild(index)} className="text-red-400 hover:text-red-600 text-sm font-medium">
+                <button onClick={() => removeChild(index)} className="text-gray-400 hover:text-red-500 text-sm font-medium transition-colors">
                   Remove
                 </button>
               )}
@@ -98,13 +98,13 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 value={child.name}
                 onChange={(e) => updateChild(index, { name: e.target.value })}
                 placeholder="Child's full name *"
-                className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
               />
 
               <select
                 value={child.gender}
                 onChange={(e) => updateChild(index, { gender: e.target.value })}
-                className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
               >
                 <option value="">Gender *</option>
                 <option value="male">Male</option>
@@ -115,7 +115,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
               <select
                 value={child.currentClass}
                 onChange={(e) => updateChild(index, { currentClass: e.target.value })}
-                className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
               >
                 <option value="">Current Class *</option>
                 {classOptions.map((c) => (
@@ -129,7 +129,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                   const val = e.target.value;
                   updateChild(index, { schoolName: val, ...(val !== "Others" ? { customSchoolName: "" } : {}) });
                 }}
-                className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
               >
                 <option value="">Select School *</option>
                 {schoolOptions.map((s) => (
@@ -143,7 +143,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                   value={child.customSchoolName}
                   onChange={(e) => updateChild(index, { customSchoolName: e.target.value })}
                   placeholder="Enter school name *"
-                  className="w-full border-2 border-gray-200 rounded-xl px-3 py-2.5 focus:border-indigo-500 outline-none text-sm text-gray-800 bg-white"
+                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
                 />
               )}
 
@@ -155,10 +155,10 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                       key={course}
                       type="button"
                       onClick={() => updateChild(index, { interestedCourse: course })}
-                      className={`py-2 px-3 rounded-xl text-sm font-medium border-2 transition-colors ${
+                      className={`py-2 px-3 rounded-xl text-sm font-medium border transition-colors ${
                         child.interestedCourse === course
-                          ? "border-indigo-500 bg-indigo-50 text-indigo-700"
-                          : "border-gray-200 text-gray-600 hover:border-gray-300"
+                          ? "border-red-500 bg-red-50 text-red-800"
+                          : "border-gray-200 text-gray-500 hover:border-gray-300"
                       }`}
                     >
                       {course}
@@ -173,7 +173,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
 
       <button
         onClick={addChild}
-        className="w-full border-2 border-dashed border-indigo-300 text-indigo-600 py-3 rounded-xl font-medium hover:bg-indigo-50 transition-colors mb-5 text-sm"
+        className="w-full border border-dashed border-red-300 text-red-500 py-3 rounded-full font-medium hover:bg-red-50 transition-colors mb-5 text-sm"
       >
         + Add Another Child
       </button>
@@ -181,14 +181,14 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
       <div className="flex gap-3">
         <button
           onClick={onBack}
-          className="flex-1 border-2 border-gray-200 text-gray-600 py-3.5 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
+          className="flex-1 border border-gray-200 text-gray-600 py-3.5 rounded-full font-semibold hover:bg-gray-100 transition-colors"
         >
           Back
         </button>
         <button
           onClick={onNext}
           disabled={!isValid}
-          className="flex-1 bg-indigo-600 text-white py-3.5 rounded-xl font-semibold hover:bg-indigo-700 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
+          className="flex-1 bg-red-800 hover:bg-red-900 text-white py-3.5 rounded-full font-semibold shadow-md shadow-red-200 disabled:bg-gray-300 disabled:shadow-none disabled:cursor-not-allowed transition-colors"
         >
           Review
         </button>
