@@ -42,7 +42,7 @@ export default function Home() {
             </div>
           </div>
         </header>
-        <main className="flex-1 flex items-center justify-center p-4">
+        <main className="flex-1 flex items-center justify-center px-3 py-2">
           <div className="w-full max-w-md">
             <SuccessScreen parentName={parentData.name} children={childrenData} />
           </div>
