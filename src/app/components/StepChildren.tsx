@@ -132,7 +132,7 @@ export default function StepChildren({ children, setChildren, onNext, onBack }: 
                 onChange={(e) => updateChild(index, { currentClass: e.target.value })}
                 className="w-full border border-gray-200 rounded-xl px-3 py-2.5 focus:border-red-500 outline-none text-sm text-gray-900 bg-white"
               >
-                <option value="">Current Class *</option>
+                <option value="">Present Class *</option>
                 {classOptions.map((c) => (
                   <option key={c} value={c}>{c}</option>
                 ))}
