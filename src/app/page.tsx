@@ -98,7 +98,7 @@ export default function Home() {
         </header>
         <main className="flex-1 flex items-center justify-center px-3 py-2">
           <div className="w-full max-w-md">
-            <SuccessScreen parentName={parentData.name} children={childrenData} />
+            <SuccessScreen parentName={parentData.name} children={childrenData} attendees={attendees} />
           </div>
         </main>
       </>
@@ -140,7 +140,17 @@ export default function Home() {
 
               <h2 className="text-xl font-bold text-gray-900 mb-1">IIT & NEET, SAINIK SCHOOL</h2>
               <h3 className="text-lg font-semibold text-red-800 mb-3">Awareness Program</h3>
-              <p className="text-sm text-gray-500 mb-6"><span className="text-red-800 font-semibold">19th April 2026</span> • Register your children for our awareness program</p>
+              <p className="text-sm text-gray-500 mb-4"><span className="text-red-800 font-semibold">19th April 2026</span> • Register your children for our awareness program</p>
+
+              {/* Graduation image + motivational quote */}
+              <div className="mb-5">
+                <img src="/graduation.png" alt="Graduation" className="w-20 h-20 object-contain mx-auto mb-3" />
+                <h4 className="text-base font-bold text-gray-800">Power of Education</h4>
+                <p className="text-sm text-gray-500 italic">Education will change your background</p>
+              </div>
+
+              {/* Free badge */}
+              <p className="text-sm font-bold text-red-800 mb-3 animate-blink">✨ Free Registration ✨</p>
 
               <button
                 onClick={() => setStep(0)}
@@ -238,6 +248,7 @@ export default function Home() {
                 parentName={parentData.name}
                 parentData={parentData}
                 children={childrenData}
+                attendees={attendees}
                 onBack={() => setStep(3)}
                 onSubmit={handleSubmit}
                 submitting={submitting}

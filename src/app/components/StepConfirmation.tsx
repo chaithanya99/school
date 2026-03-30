@@ -8,13 +8,14 @@ interface StepConfirmationProps {
   parentName: string;
   parentData: ParentData;
   children: ChildData[];
+  attendees: number;
   onBack: () => void;
   onSubmit: () => void;
   submitting: boolean;
 }
 
 export default function StepConfirmation({
-  phone, parentName, parentData, children, onBack, onSubmit, submitting,
+  phone, parentName, parentData, children, attendees, onBack, onSubmit, submitting,
 }: StepConfirmationProps) {
   return (
     <div className="flex flex-col px-2">
@@ -57,6 +58,17 @@ export default function StepConfirmation({
               <span className="text-gray-800 font-medium">{parentData.village}</span>
             </div>
 
+          </div>
+        </div>
+
+        {/* Attendees */}
+        <div className="bg-white rounded-2xl p-4 border border-red-100">
+          <h3 className="text-sm font-semibold text-red-800 mb-3">Attendees</h3>
+          <div className="space-y-2 text-sm">
+            <div className="flex justify-between">
+              <span className="text-gray-500">Number of People</span>
+              <span className="text-gray-800 font-medium">{attendees} {attendees === 1 ? "person" : "people"}</span>
+            </div>
           </div>
         </div>
 

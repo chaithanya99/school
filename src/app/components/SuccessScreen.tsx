@@ -5,9 +5,10 @@ import { ChildData } from "./StepChildren";
 interface SuccessScreenProps {
   parentName: string;
   children: ChildData[];
+  attendees: number;
 }
 
-export default function SuccessScreen({ parentName, children }: SuccessScreenProps) {
+export default function SuccessScreen({ parentName, children, attendees }: SuccessScreenProps) {
   return (
     <div className="flex flex-col items-center px-2 text-center">
       {/* Compact success message */}
@@ -122,6 +123,14 @@ export default function SuccessScreen({ parentName, children }: SuccessScreenPro
               <span style={{ color: "#B8960C" }} className="text-sm">📍</span>
               <p className="text-xs font-bold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>
                 Nanu Bala Yellapa Function Hall
+              </p>
+            </div>
+
+            {/* Attendees */}
+            <div className="flex items-center justify-center gap-1.5 mb-3">
+              <span className="text-sm">👥</span>
+              <p className="text-xs font-semibold" style={{ color: "#3a3a3a", fontFamily: "Georgia, serif" }}>
+                {attendees} {attendees === 1 ? "Person" : "People"} Attending
               </p>
             </div>
 
